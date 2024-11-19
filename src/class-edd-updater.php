@@ -14,7 +14,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Class Updater
  */
-class Updater {
+class EDD_Updater {
 
 	/**
 	 * The URL pointing to the custom API endpoint.
