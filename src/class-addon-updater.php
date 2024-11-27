@@ -106,4 +106,18 @@ abstract class Addon_Updater implements Integration_Interface {
 	public function get_license_expires( $slug = '' ) {
 		return get_option( $slug . '-license-expires', '' );
 	}
+
+	/**
+	 * Set the expiration of the updater transient key to 1 day instead of 1 hour to prevent too many update checks
+	 *
+	 * @param array $value value array.
+	 *
+	 * @return array
+	 * @since   1.7.14
+	 */
+	public function set_expiration_of_update_option( $value ) {
+		$value['timeout'] = time() + 86400;
+
+		return $value;
+	}
 }
