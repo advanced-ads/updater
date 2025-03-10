@@ -229,9 +229,9 @@ class EDD_Updater {
 		$limited_data->icons        = $this->convert_object_to_array( $version_info->icons );
 		$limited_data->banners      = $this->convert_object_to_array( $version_info->banners );
 		$limited_data->new_version  = $version_info->new_version;
-		$limited_data->tested       = $version_info->tested;
-		$limited_data->requires     = $version_info->requires;
-		$limited_data->requires_php = $version_info->requires_php;
+		$limited_data->tested       = $version_info->tested ?? '6.7';
+		$limited_data->requires     = $version_info->requires ?? '5.7';
+		$limited_data->requires_php = $version_info->requires_php ?? '7.4';
 
 		return $limited_data;
 	}
