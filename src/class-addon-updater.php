@@ -24,7 +24,6 @@ abstract class Addon_Updater implements Integration_Interface {
 	 */
 	public function hooks(): void {
 		add_action( 'admin_init', [ $this, 'add_on_updater' ], 1 );
-		add_filter( 'advanced-ads-add-ons', [ $this, 'register_auto_updater' ] );
 	}
 
 	/**
@@ -40,19 +39,6 @@ abstract class Addon_Updater implements Integration_Interface {
 	 * @return string
 	 */
 	abstract public function get_id(): string;
-
-	/**
-	 * Register plugin for the auto updater in the base plugin
-	 *
-	 * @param array $plugins plugin that are already registered for auto updates.
-	 *
-	 * @return array
-	 */
-	public function register_auto_updater( array $plugins = [] ) {
-		$plugins[ $this->get_id() ] = $this->get_data();
-
-		return $plugins;
-	}
 
 	/**
 	 * Register the Updater class for every add-on, which includes getting version information
